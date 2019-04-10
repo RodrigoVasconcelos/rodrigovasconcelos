@@ -9,6 +9,9 @@ function main() {
     return mainElement;
   }
 
+  //-------BUILD SPLASH SCREEN-------//
+
+
   function buildSplashScreen() {
     const splashScreen = buildDom(`
       <section>
@@ -22,6 +25,9 @@ function main() {
 
     starButton.addEventListener('click', buildGameScreen);
   };
+
+  //-------BUILD GAME SCREEN-------//
+
   function buildGameScreen() {
     const gameScreen = buildDom(`
       <section class="game-container">
@@ -34,14 +40,23 @@ function main() {
     const width = gameContainerElement.offsetWidth;
     const height = gameContainerElement.offsetHeight;
 
-  const  canvasElement = document.querySelector('canvas');
+    const  canvasElement = document.querySelector('canvas');
 
-  canvasElement.setAttribute('width', width);
-  canvasElement.setAttribute('height', height);
+    canvasElement.setAttribute('width', width);
+    canvasElement.setAttribute('height', height);
+
+    const game = new Game(canvasElement);
+
+    game.startLoop();
+
 
     setTimeout(buildGameOverScreen, 3000)
 
   };
+
+  //-------BUILD GAME OVER-------//
+
+
   function buildGameOverScreen() {
     const gameOverScreen = buildDom(`
       <section>
