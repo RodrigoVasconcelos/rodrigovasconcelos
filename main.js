@@ -46,11 +46,27 @@ function main() {
     canvasElement.setAttribute('height', height);
 
     const game = new Game(canvasElement);
-
+    
     game.startLoop();
+    
+    document.addEventListener('keydown', function (event) {
 
 
-    setTimeout(buildGameOverScreen, 3000)
+      if (event.keyCode === 38) {
+        game.player.setDirection(-1);
+      } else if (event.keyCode === 40) {
+        game.player.setDirection(1);
+      }
+    })
+
+    document.addEventListener('keyup', function () {
+
+      if(event.keyCode === 38 || event.keyCode === 40) {
+        game.player.setDirection(0);
+      }
+    })
+
+    //setTimeout(buildGameOverScreen, 3000)
 
   };
 
